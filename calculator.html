@@ -78,7 +78,8 @@ var vm = new Vue({
     el:"#app",
     data:{
          result:"0",
-         tmpe:""
+         temp:"",
+         operation:""
     },
     methods:{
          Nine(){
@@ -153,16 +154,24 @@ var vm = new Vue({
            }
          },
          Add(){
-  
+            this.temp = this.result;
+            this.operation ="+" ;
+            this.result = "0";
          },
          Minus(){
-
+            this.temp = this.result;
+            this.operation ="-" ;
+            this.result = "0";
          },
          Multiply(){
-     
+            this.temp = this.result;
+            this.operation ="*" ;
+            this.result = "0";
          },
          Divide(){
-                  
+            this.temp = this.result;
+            this.operation ="/" ;
+            this.result = "0";
          },
          Dot(){
             this.result = this.result.concat('.') ;
@@ -171,7 +180,18 @@ var vm = new Vue({
             this.result="0" ;  
          },
          Equal(){
-                  
+            if(this.operation=="+") {
+                this.result = parseFloat(this.temp) + parseFloat(this.result) ; 
+
+            }else if (this.operation=="-"){
+                this.result = parseFloat(this.temp) - parseFloat(this.result) ; 
+            }else if (this.operation=="*"){
+                this.result = parseFloat(this.temp) * parseFloat(this.result) ; 
+            }else if (this.operation=="/"){
+                this.result = parseFloat(this.temp) / parseFloat(this.result) ; 
+            }
+            this.result = String(this.result);
+            
          },
     }
     
